@@ -1,0 +1,14 @@
+{
+  "name": "convertisseur-devises",
+  "version": "1.0.0",
+  "description": "Convertisseur de devises simple en HTML, CSS et JavaScript",
+  "main": "index.html",
+  "scripts": {
+    "dev": "echo 'Application standalone - Ouvrez index.html directement dans votre navigateur'",
+    "build": "echo 'Aucune compilation nécessaire'",
+    "preview": "echo 'Ouvrez index.html directement dans votre navigateur'"
+  },
+  "keywords": ["currency", "converter", "html", "css", "javascript"],
+  "author": "",
+  "license": "MIT"
+}

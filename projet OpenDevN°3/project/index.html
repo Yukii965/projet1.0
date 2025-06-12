@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convertisseur de Devises</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header class="main-header">
+        <div class="header-container">
+            <div class="header-left">
+                <div class="header-logo">
+                    <svg width="40" height="40" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <circle cx="24" cy="24" r="22" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                        <path d="M18 16h12v4h-4v12h-4V20h-4v-4z" fill="#FF8C00"/>
+                        <circle cx="32" cy="16" r="6" fill="#4A90E2" opacity="0.8"/>
+                        <text x="32" y="20" text-anchor="middle" fill="white" font-size="8" font-weight="bold">$</text>
+                        <path d="M12 28 L20 32 L12 36 Z" fill="#10B981"/>
+                        <path d="M36 28 L28 32 L36 36 Z" fill="#10B981"/>
+                    </svg>
+                </div>
+                <div class="header-text">
+                    <h1 class="header-title">CurrencyConverter</h1>
+                    <p class="header-tagline">Votre outil de conversion fiable</p>
+                </div>
+            </div>
+            <nav class="header-nav">
+                <a href="#converter" class="nav-link active">Convertisseur</a>
+                <a href="#info" class="nav-link">Guide</a>
+                <a href="#about" class="nav-link">À propos</a>
+            </nav>
+            <div class="theme-toggle">
+                <button id="themeToggle" aria-label="Changer de thème">
+                    <span class="theme-icon">🌙</span>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <section class="hero-section" id="converter">
+                <div class="hero-content">
+                    <h2 class="hero-title">
+                        <div class="logo">
+                            <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                <circle cx="24" cy="24" r="22" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                                <path d="M18 16h12v4h-4v12h-4V20h-4v-4z" fill="#FF8C00"/>
+                                <circle cx="32" cy="16" r="6" fill="#4A90E2" opacity="0.8"/>
+                                <text x="32" y="20" text-anchor="middle" fill="white" font-size="8" font-weight="bold">$</text>
+                                <path d="M12 28 L20 32 L12 36 Z" fill="#10B981"/>
+                                <path d="M36 28 L28 32 L36 36 Z" fill="#10B981"/>
+                            </svg>
+                        </div>
+                        Convertisseur de Devises
+                    </h2>
+                    <p class="hero-subtitle">Convertissez facilement vos devises avec des taux personnalisés</p>
+                </div>
+            </section>
+
+            <div class="converter-card">
+                <form id="converterForm" class="converter-form">
+                    <div class="form-group">
+                        <label for="amount" class="form-label">Montant à convertir</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="number" 
+                                id="amount" 
+                                class="form-input" 
+                                placeholder="Entrez le montant"
+                                step="0.01"
+                                min="0"
+                            >
+                        </div>
+                    </div>
+
+                    <div class="currency-section">
+                        <div class="form-group">
+                            <label for="fromCurrency" class="form-label">De</label>
+                            <div class="select-wrapper">
+                                <select id="fromCurrency" class="form-select">
+                                    <option value="">Choisir une devise</option>
+                                    <option value="ariary">🇲🇬 Ariary (MGA)</option>
+                                    <option value="euro">🇪🇺 Euro (EUR)</option>
+                                    <option value="dollar">🇺🇸 Dollar (USD)</option>
+                                    <option value="yen">🇯🇵 Yen (JPY)</option>
+                                    <option value="franc">🇨🇭 Franc Suisse (CHF)</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="swap-button-container">
+                            <button type="button" id="swapButton" class="swap-button" aria-label="Échanger les devises">
+                                <span class="swap-icon">⇄</span>
+                            </button>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="toCurrency" class="form-label">Vers</label>
+                            <div class="select-wrapper">
+                                <select id="toCurrency" class="form-select">
+                                    <option value="">Choisir une devise</option>
+                                    <option value="ariary">🇲🇬 Ariary (MGA)</option>
+                                    <option value="euro">🇪🇺 Euro (EUR)</option>
+                                    <option value="dollar">🇺🇸 Dollar (USD)</option>
+                                    <option value="yen">🇯🇵 Yen (JPY)</option>
+                                    <option value="franc">🇨🇭 Franc Suisse (CHF)</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="exchangeRate" class="form-label">Taux de change</label>
+                        <div class="input-wrapper">
+                            <input 
+                                type="number" 
+                                id="exchangeRate" 
+                                class="form-input" 
+                                placeholder="Ex: 1 EUR = 4800 MGA"
+                                step="0.0001"
+                                min="0"
+                            >
+                        </div>
+                        <small class="form-hint">Entrez le taux de conversion (combien vaut 1 unité de la devise source dans la devise cible)</small>
+                    </div>
+
+                    <button type="submit" class="convert-button">
+                        <span class="button-text">Convertir</span>
+                        <span class="button-icon">🔄</span>
+                    </button>
+                </form>
+
+                <div id="errorMessage" class="error-message" style="display: none;"></div>
+                
+                <div id="result" class="result" style="display: none;">
+                    <div class="result-content">
+                        <div class="result-title">Résultat de la conversion</div>
+                        <div class="result-value" id="resultValue"></div>
+                        <div class="result-details" id="resultDetails"></div>
+                    </div>
+                </div>
+            </div>
+
+            <section class="info-section" id="info">
+                <h3>💡 Comment utiliser le convertisseur</h3>
+                <ul>
+                    <li>Entrez le montant que vous souhaitez convertir</li>
+                    <li>Sélectionnez la devise source et la devise cible</li>
+                    <li>Saisissez le taux de change (ex: 1 EUR = 4800 MGA)</li>
+                    <li>Cliquez sur "Convertir" pour voir le résultat</li>
+                </ul>
+            </section>
+
+            <section class="about-section" id="about">
+                <div class="about-content">
+                    <h3>🌍 À propos de notre convertisseur</h3>
+                    <p>Notre convertisseur de devises vous permet de calculer facilement les conversions entre différentes monnaies avec des taux personnalisés. Idéal pour les voyageurs, les commerçants et tous ceux qui ont besoin de conversions rapides et précises.</p>
+                    <div class="features-grid">
+                        <div class="feature-item">
+                            <span class="feature-icon">⚡</span>
+                            <h4>Rapide</h4>
+                            <p>Conversion instantanée</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🎯</span>
+                            <h4>Précis</h4>
+                            <p>Calculs exacts</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">🌙</span>
+                            <h4>Mode sombre</h4>
+                            <p>Interface adaptable</p>
+                        </div>
+                        <div class="feature-item">
+                            <span class="feature-icon">📱</span>
+                            <h4>Responsive</h4>
+                            <p>Compatible mobile</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="footer-container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <svg width="32" height="32" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="24" cy="24" r="22" fill="#FFD700" stroke="#FFA500" stroke-width="2"/>
+                            <path d="M18 16h12v4h-4v12h-4V20h-4v-4z" fill="#FF8C00"/>
+                            <circle cx="32" cy="16" r="6" fill="#4A90E2" opacity="0.8"/>
+                            <text x="32" y="20" text-anchor="middle" fill="white" font-size="8" font-weight="bold">$</text>
+                            <path d="M12 28 L20 32 L12 36 Z" fill="#10B981"/>
+                            <path d="M36 28 L28 32 L36 36 Z" fill="#10B981"/>
+                        </svg>
+                        <span class="footer-brand">CurrencyConverter</span>
+                    </div>
+                    <p class="footer-description">
+                        Votre outil de conversion de devises fiable et moderne. 
+                        Convertissez facilement entre différentes monnaies avec des taux personnalisés.
+                    </p>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Devises supportées</h4>
+                    <ul class="footer-list">
+                        <li>🇲🇬 Ariary Malgache (MGA)</li>
+                        <li>🇪🇺 Euro (EUR)</li>
+                        <li>🇺🇸 Dollar Américain (USD)</li>
+                        <li>🇯🇵 Yen Japonais (JPY)</li>
+                        <li>🇨🇭 Franc Suisse (CHF)</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Fonctionnalités</h4>
+                    <ul class="footer-list">
+                        <li>✨ Interface moderne</li>
+                        <li>🌙 Mode sombre/clair</li>
+                        <li>📱 Design responsive</li>
+                        <li>⚡ Conversion instantanée</li>
+                        <li>🔄 Échange de devises</li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h4 class="footer-title">Raccourcis clavier</h4>
+                    <ul class="footer-list">
+                        <li><kbd>Ctrl</kbd> + <kbd>Enter</kbd> Convertir</li>
+                        <li><kbd>Ctrl</kbd> + <kbd>S</kbd> Échanger</li>
+                        <li><kbd>Escape</kbd> Effacer</li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <div class="footer-bottom-content">
+                    <p class="footer-copyright">
+                        © 2024 CurrencyConverter. Tous droits réservés.
+                    </p>
+                    <div class="footer-links">
+                        <a href="#" class="footer-link">Confidentialité</a>
+                        <a href="#" class="footer-link">Conditions</a>
+                        <a href="#" class="footer-link">Support</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
